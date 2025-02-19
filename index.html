@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценка трека</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Оценка трека</h1>
+        
+        <div class="horizontal-layout">
+            <div class="image-section">
+                <div class="image-upload">
+                    <label for="track-image" class="upload-label">
+                        <span>Загрузить фото</span>
+                        <input type="file" accept="image/*" id="track-image">
+                    </label>
+                    <div id="image-preview" class="image-preview"></div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <input type="text" placeholder="Автор - Название" id="track-info">
+                
+                <div class="criteria">
+                    <div>
+                        <label>РИФМЫ / ОБРАЗЫ</label>
+                        <div class="slider-container">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="rhyme">
+                            <span class="ratingValue">5</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label>РЕАЛИЗАЦИЯ СТИЛЯ</label>
+                        <div class="slider-container">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="style">
+                            <span class="ratingValue">5</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label>СТРУКТУРА / РИТМИКА</label>
+                        <div class="slider-container">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="structure">
+                            <span class="ratingValue">5</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label>ИНДИВИДУАЛЬНОСТЬ / ХАРИЗМА</label>
+                        <div class="slider-container">
+                            <input type="range" min="1" max="10" value="5" class="slider" id="charisma">
+                            <span class="ratingValue">5</span>
+                        </div>
+                    </div>
+                    <div>
+                        <label>АТМОСФЕРА / ВАЙБ</label>
+                        <div class="slider-container">
+                            <input type="range" min="1" max="10" value="5" class="slider purple-slider" id="vibe">
+                            <span class="ratingValue">5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="final-score">
+                    <h2>Итоговая оценка: <span id="finalScore">0.00</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

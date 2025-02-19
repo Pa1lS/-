@@ -1,0 +1,218 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Черный фон */
+    color: #fff; /* Белый текст */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #1a1a1a; /* Темно-серый фон контейнера */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Светлая тень */
+    width: 90%;
+    max-width: 1000px; /* Шире для горизонтального формата */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Горизонтальный макет */
+.horizontal-layout {
+    display: flex;
+    gap: 20px; /* Расстояние между блоками */
+}
+
+/* Блок для фотографии */
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-upload {
+    text-align: center;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+    background-color: #0056b3;
+}
+
+#track-image {
+    display: none; /* Скрываем стандартный input */
+}
+
+.image-preview {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #444;
+    border-radius: 10px;
+    padding: 10px;
+    width: 400px; /* Фиксированная ширина */
+    height: 400px; /* Фиксированная высота */
+    overflow: hidden; /* Обрезаем изображение, если оно больше */
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохраняем пропорции и обрезаем изображение */
+    border-radius: 10px;
+}
+
+/* Блок для информации и критериев */
+.info-section {
+    flex: 2;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.criteria {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.criteria label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.slider-container {
+    width: 100%;
+}
+
+.slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    background: #444;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    border-radius: 5px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007BFF;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #007BFF;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.purple-slider::-webkit-slider-thumb {
+    background: #a730ec;
+}
+
+.purple-slider::-moz-range-thumb {
+    background: #d303d3;
+}
+
+.ratingValue {
+    display: block;
+    margin-top: 5px;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+/* Стили для ползунка */
+.slider {
+    width: 100%;
+    -webkit-appearance: none; /* Убираем стандартный стиль */
+    appearance: none;
+    height: 8px;
+    background: #444; /* Цвет фона ползунка */
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    border-radius: 5px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+/* Стили для "бегунка" в WebKit-браузерах (Chrome, Safari) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Убираем стандартный стиль */
+    appearance: none;
+    width: 35px; /* Ширина "бегунка" */
+    height: 35px; /* Высота "бегунка" */
+    background-image: url('danek.png'); /* Путь к вашему изображению */
+    background-size: cover; /* Масштабируем изображение */
+    background-position: center; /* Центрируем изображение */
+    cursor: pointer;
+    border-radius: 50%; /* Если хотите круглую форму */
+}
+
+/* Стили для "бегунка" в Firefox */
+.slider::-moz-range-thumb {
+    width: 35px; /* Ширина "бегунка" */
+    height: 35px; /* Высота "бегунка" */
+    background-image: url('danek.png'); /* Путь к вашему изображению */
+    background-size: cover; /* Масштабируем изображение */
+    background-position: center; /* Центрируем изображение */
+    cursor: pointer;
+    border-radius: 50%; /* Если хотите круглую форму */
+}
+
+.calculate-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.calculate-button:hover {
+    background-color: #0056b3;
+}
