@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   if (
     !document.getElementById("rhyme") ||
-    !document.getElementById("structure") ||
+    !document.getElementById("rhythm") ||
+    !document.getElementById("quality") ||
     !document.getElementById("style") ||
-    !document.getElementById("charisma") ||
+    !document.getElementById("wealth") ||
     !document.getElementById("vibe") ||
     !document.getElementById("finalScore")
   ) {
@@ -41,30 +42,55 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function calculateFinalScore() {
+    let quality =
+      parseFloat(
+        document.getElementById("quality").value
+      ) || 0;
     let rhyme =
       parseFloat(document.getElementById("rhyme").value) ||
       0;
-    let structure =
-      parseFloat(
-        document.getElementById("structure").value
-      ) || 0;
+    let wealth =
+      parseFloat(document.getElementById("wealth").value) ||
+      0;
     let style =
       parseFloat(document.getElementById("style").value) ||
       0;
-    let charisma =
-      parseFloat(
-        document.getElementById("charisma").value
-      ) || 0;
+    let rhythm =
+      parseFloat(document.getElementById("rhythm").value) ||
+      0;
     let vibe =
       parseFloat(document.getElementById("vibe").value) ||
       1.0;
 
-    let baseScore =
-      (rhyme + structure + style + charisma) * 1.4;
-    let vibeMultiplier = 1.0558 ** (vibe - 1);
-    let weightedScore = baseScore * vibeMultiplier;
+    function redefiningSmallValues(id) {
+      if (4 < id <= 7) {
+        id *= id * 1.2;
+      } else if (7 < id <= 10) {
+        id *= 1.39;
+      }
+      return id;
+    }
 
-    weightedScore = Math.min(weightedScore, 90);
+    function redefiningLargeValues(id) {
+      if (1 <= id < 5) {
+        id *= id * 1.2;
+      } else if (5 <= id < 7) {
+        id *= 1.4;
+      } else if (7 <= id <= 10) {
+        id *= 1.6;
+      }
+      return id;
+    }
+
+    let weightedScore =
+      redefiningLargeValues(style) +
+      redefiningLargeValues(vibe) +
+      redefiningSmallValues(rhythm) +
+      redefiningSmallValues(rhyme) +
+      redefiningSmallValues(wealth) +
+      redefiningSmallValues(quality);
+
+    weightedScore = Math.min(weightedScore, 100);
 
     document.getElementById("finalScore").textContent =
       Math.round(weightedScore);
