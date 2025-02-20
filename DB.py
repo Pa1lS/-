@@ -161,7 +161,7 @@ class Data_Base:
     def _set_Song(self, artist_name, name, release_date):
         """Добавление нового трека"""
         artist_id = self.get_autor(artist_name)[0][1]
-        command = """INSERT INTO tracks (artist_id, name, release_data) VALUES(?, ?, ?)"""
+        command = """INSERT INTO tracks (artist_id, name, release_date) VALUES(?, ?, ?)"""
         self.__command(command=command, param=(artist_id, name, release_date))
         
     
