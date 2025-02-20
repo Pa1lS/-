@@ -167,7 +167,7 @@ class Data_Base:
     
     def _remove_Song(self, song_name):
         """Удаление трека из БД"""
-        command = """DELET FROM tracks WHERE name = ?"""
+        command = """DELETE FROM tracks WHERE name = ?"""
         self.__command(command=command, param=(song_name,))
         
 
