@@ -1,33 +1,49 @@
 /* Общие стили */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #000; /* Черный фон */
-    color: #fff; /* Белый текст */
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Темный фон */
+    color: #ffffff; /* Белый текст */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 .container {
-    background-color: #1a1a1a; /* Темно-серый фон контейнера */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Светлая тень */
+    background-color: #1e1e1e; /* Темно-серый фон контейнера */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Тень для глубины */
     width: 90%;
     max-width: 1000px; /* Шире для горизонтального формата */
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* Горизонтальный макет */
 .horizontal-layout {
     display: flex;
-    gap: 20px; /* Расстояние между блоками */
+    gap: 30px; /* Расстояние между блоками */
 }
 
 /* Блок для фотографии */
@@ -44,16 +60,18 @@ h1 {
 
 .upload-label {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background-color: #007BFF;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1.1em;
 }
 
 .upload-label:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 #track-image {
@@ -61,16 +79,22 @@ h1 {
 }
 
 .image-preview {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px dashed #444;
-    border-radius: 10px;
-    padding: 10px;
-    width: 400px; /* Фиксированная ширина */
-    height: 400px; /* Фиксированная высота */
+    border: 3px dashed #444;
+    border-radius: 15px;
+    padding: 15px;
+    width: 420px; /* Фиксированная ширина */
+    height: 450px; /* Фиксированная высота */
     overflow: hidden; /* Обрезаем изображение, если оно больше */
+    background-color: #2a2a2a; /* Темный фон для превью */
+    transition: border-color 0.3s;
+}
+
+.image-preview:hover {
+    border-color: #007BFF;
 }
 
 .image-preview img {
@@ -87,24 +111,33 @@ h1 {
 
 input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin-bottom: 25px;
     border: 1px solid #444;
-    border-radius: 5px;
-    background-color: #333;
+    border-radius: 8px;
+    background-color: #2a2a2a;
     color: #fff;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #007BFF;
+    outline: none;
 }
 
 .criteria {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .criteria label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .slider-container {
@@ -115,12 +148,13 @@ input[type="text"] {
     width: 100%;
     -webkit-appearance: none;
     appearance: none;
-    height: 8px;
+    height: 10px;
     background: #444;
     outline: none;
     opacity: 0.7;
     transition: opacity 0.2s;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .slider:hover {
@@ -130,19 +164,31 @@ input[type="text"] {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: #007BFF;
     cursor: pointer;
     border-radius: 50%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    background: #0056b3;
+    transform: scale(1.1);
 }
 
 .slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: #007BFF;
     cursor: pointer;
     border-radius: 50%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.slider::-moz-range-thumb:hover {
+    background: #0056b3;
+    transform: scale(1.1);
 }
 
 .purple-slider::-webkit-slider-thumb {
@@ -155,9 +201,46 @@ input[type="text"] {
 
 .ratingValue {
     display: block;
-    margin-top: 5px;
-    font-size: 1.2em;
+    margin-top: 8px;
+    font-size: 1.3em;
     color: #fff;
+    font-weight: bold;
+}
+
+/* Стили для итоговой оценки */
+.final-score {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.final-score h2 {
+    font-size: 2em;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#finalScore {
+    font-size: 1.5em;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+/* Анимация для итоговой оценки */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.final-score h2 span {
+    display: inline-block;
+    animation: pulse 1.5s infinite;
 }
 
 /* Стили для ползунка */
@@ -165,7 +248,7 @@ input[type="text"] {
     width: 100%;
     -webkit-appearance: none; /* Убираем стандартный стиль */
     appearance: none;
-    height: 8px;
+    height: 10px;
     background: #444; /* Цвет фона ползунка */
     outline: none;
     opacity: 0.7;
@@ -188,31 +271,32 @@ input[type="text"] {
     background-position: center; /* Центрируем изображение */
     cursor: pointer;
     border-radius: 50%; /* Если хотите круглую форму */
+    transition: transform 0.2s;
 }
 
-/* Стили для "бегунка" в Firefox */
-.slider::-moz-range-thumb {
-    width: 35px; /* Ширина "бегунка" */
-    height: 35px; /* Высота "бегунка" */
-    background-image: url('danek.png'); /* Путь к вашему изображению */
-    background-size: cover; /* Масштабируем изображение */
-    background-position: center; /* Центрируем изображение */
-    cursor: pointer;
-    border-radius: 50%; /* Если хотите круглую форму */
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
 }
 
-.calculate-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+
+
+
+.slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
 }
 
-.calculate-button:hover {
-    background-color: #0056b3;
+/* Золотой цвет для итоговой оценки */
+.golden {
+    color: #FFD700; /* Золотой цвет */
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700; /* Свечение */
+    animation: glow 1.5s infinite alternate; /* Анимация свечения */
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    }
+    to {
+        text-shadow: 0 0 20px #FFD700, 0 0 40px #FFD700;
+    }
 }

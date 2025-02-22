@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   if (
-    !document.getElementById("rhyme") ||
     !document.getElementById("rhythm") ||
-    !document.getElementById("quality") ||
-    !document.getElementById("style") ||
+    !document.getElementById("rhyme") ||
     !document.getElementById("wealth") ||
+    !document.getElementById("imagery") ||
+    !document.getElementById("charisma") ||
     !document.getElementById("vibe") ||
     !document.getElementById("finalScore")
   ) {
@@ -42,58 +42,51 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function calculateFinalScore() {
-    let quality =
-      parseFloat(
-        document.getElementById("quality").value
-      ) || 0;
-    let rhyme =
-      parseFloat(document.getElementById("rhyme").value) ||
-      0;
-    let wealth =
-      parseFloat(document.getElementById("wealth").value) ||
-      0;
-    let style =
-      parseFloat(document.getElementById("style").value) ||
-      0;
-    let rhythm =
-      parseFloat(document.getElementById("rhythm").value) ||
-      0;
-    let vibe =
-      parseFloat(document.getElementById("vibe").value) ||
-      1.0;
+    let rhythm = parseFloat(document.getElementById("rhythm").value) || 0;
+    let rhyme = parseFloat(document.getElementById("rhyme").value) || 0;
+    let wealth = parseFloat(document.getElementById("wealth").value) || 0;
+    let imagery = parseFloat(document.getElementById("imagery").value) || 0;
+    let charisma = parseFloat(document.getElementById("charisma").value) || 0;
+    let vibe = parseFloat(document.getElementById("vibe").value) || 0;
 
-    function redefiningSmallValues(id) {
-      if (4 < id <= 7) {
-        id *= id * 1.2;
-      } else if (7 < id <= 10) {
-        id *= 1.39;
-      }
-      return id;
+    function getBaseCoefficient(value) {
+      if (value >= 1 && value < 4) return 1;
+      if (value >= 4 && value < 7) return 1.2;
+      if (value >= 7 && value <= 10) return 1.39;
+      return 1;
     }
 
-    function redefiningLargeValues(id) {
-      if (1 <= id < 5) {
-        id *= id * 1.2;
-      } else if (5 <= id < 7) {
-        id *= 1.4;
-      } else if (7 <= id <= 10) {
-        id *= 1.6;
-      }
-      return id;
+    function getAdditionalCoefficient(value) {
+      if (value >= 1 && value <= 5) return 1.2;
+      if (value >= 5 && value <= 8) return 1.4;
+      if (value >= 8 && value <= 10) return 1.6;
+      return 1;
     }
 
-    let weightedScore =
-      redefiningLargeValues(style) +
-      redefiningLargeValues(vibe) +
-      redefiningSmallValues(rhythm) +
-      redefiningSmallValues(rhyme) +
-      redefiningSmallValues(wealth) +
-      redefiningSmallValues(quality);
+    rhythm *= getBaseCoefficient(rhythm);
+    rhyme *= getBaseCoefficient(rhyme);
+    wealth *= getBaseCoefficient(wealth);
+    imagery *= getBaseCoefficient(imagery);
+    charisma *= getBaseCoefficient(charisma) * getAdditionalCoefficient(charisma);
+    vibe *= getBaseCoefficient(vibe) * getAdditionalCoefficient(vibe);
 
+    let weightedScore = rhythm + rhyme + wealth + imagery + charisma + vibe;
+
+    let maxPossibleScore = (10 * getBaseCoefficient(10)) * 4 +
+                           (10 * getBaseCoefficient(10) * getAdditionalCoefficient(10)) * 2;
+
+    weightedScore = (weightedScore / maxPossibleScore) * 100;
     weightedScore = Math.min(weightedScore, 100);
 
-    document.getElementById("finalScore").textContent =
-      Math.round(weightedScore);
+    const finalScoreElement = document.getElementById("finalScore");
+    finalScoreElement.textContent = Math.round(weightedScore);
+
+    // Изменяем цвет текста на золотой, если оценка 100
+    if (weightedScore === 100) {
+      finalScoreElement.style.color = "#FFD700"; // Золотой
+    } else {
+      finalScoreElement.style.color = "#007BFF"; // Синий
+    }
   }
 
   calculateFinalScore();
