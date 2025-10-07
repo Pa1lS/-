@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>DanyaZaTvorchestvo — Оцени музыку</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    {% block style %} {% comment %}
+    <link rel="stylesheet" href="{% static css_file %}" />
+    {% endcomment %} {% endblock%}
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <h1 class="logo">
+          🎵<a href="/">DanyaZaTvorchestvo</a>
+        </h1>
+        <nav>
+          <a href="#">Вход</a>
+          <a href="/music/">Песни</a>
+          <a href="#">Оценка</a>
+          <a href="#" class="btn">Регистрация</a>
+        </nav>
+      </div>
+    </header>
+
+    {% block content %} {% endblock %}
+  </body>
+</html>

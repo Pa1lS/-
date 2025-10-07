@@ -1,0 +1,18 @@
+{%extends "base.html"%} {% load static %}{%block style%}
+<link rel="stylesheet" href="{% static css_file %}" />
+{%endblock%} {% block content%}
+<ul class="list-music">
+  {% for pesnya in musics_list%}
+  <li>
+    <div class="Info-music">
+      <h2 class="link-info-music">
+        <a href="{{ pesnya.get_absolute_url }}"
+          >{{pesnya.name}}</a
+        >
+      </h2>
+      <p>{{pesnya.autor}}</p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{%endblock%}

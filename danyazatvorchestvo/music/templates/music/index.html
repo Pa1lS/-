@@ -1,0 +1,29 @@
+{% extends "base.html" %}{% load static %} {%block style%}
+<link rel="stylesheet" href="{% static css_file %}" />
+{%endblock%} {% block content%}
+
+<main>
+  <div class="container hero">
+    <div class="hero-text">
+      <h2>Оценивай песни<br />и находи любимые хиты</h2>
+      <p>
+        Платформа для музыкальных фанатов — оценивай треки,
+        открывай новые хиты и делись своим мнением!
+      </p>
+      <a href="#" class="btn large">Начать сейчас</a>
+    </div>
+    <div class="hero-image">
+      <img
+        src="{% static 'music/images/danek.png' %}"
+        alt="Музыка"
+      />
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>
+    &copy; 2025 SongRater. Музыка ближе, чем ты думаешь.
+  </p>
+</footer>
+{% endblock %}
