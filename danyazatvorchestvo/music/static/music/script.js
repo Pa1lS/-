@@ -114,6 +114,5 @@ document.addEventListener("DOMContentLoaded", function () {
       finalScoreElement.style.color = "#007BFF"; // Синий
     }
   }
-
   calculateFinalScore();
 });
