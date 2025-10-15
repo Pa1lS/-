@@ -20,6 +20,8 @@ function getCSRFToken() {
 document
   .getElementById("post-Score")
   .addEventListener("click", () => {
+    const element = document.getElementById("pesnya");
+    const p_id = element.dataset.pid;
     const csrftoken = getCSRFToken(); // Получаем токен
 
     const rating = {
@@ -27,6 +29,7 @@ document
       value: document
         .getElementById("finalScore")
         .textContent.trim(),
+      pesnya_id: p_id,
     };
 
     fetch("/submit_rating/", {
