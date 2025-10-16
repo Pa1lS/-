@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% load static %}{% block style %}
+<link rel="stylesheet" href="{% static css_file %}" />
+{% endblock %} {% block content %}
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>Вход</h2>
+
+    {% if messages %} {% for message in messages %}
+    <div class="alert">{{ message }}</div>
+    {% endfor %} {% endif %}
+
+    <form method="post">
+      {% csrf_token %} {% for field in form %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}"
+          >{{ field.label }}</label
+        >
+        {{ field }} {% if field.errors %}
+        <div class="error">{{ field.errors }}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <button type="submit" class="btn-primary">
+        Войти
+      </button>
+    </form>
+
+    <p class="auth-link">
+      Нет аккаунта?
+      <a href="{% url 'register' %}">Зарегистрироваться</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
