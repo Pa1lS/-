@@ -18,6 +18,9 @@ class Music(models.Model):
     def get_absolute_url(self):
         return reverse("pesnya", kwargs={"pesnya_slug": self.name_slug})
     
+    def get_absolute_url_for_ocenka(self):
+        return reverse("submit_song", kwargs={"pesnya_slug": self.name_slug})
+    
     def get_sred_ocenka(self):
         sum_ocenok = self.sum_ocenok
         quantity_ocenok = self.quantity_ocenok

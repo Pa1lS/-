@@ -1,0 +1,179 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(
+    to bottom right,
+    #0e0e11,
+    #1a1a22
+  );
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  background: #0a0a0f;
+  border-bottom: 1px solid #2a2a2a;
+  padding: 20px 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #6aa3ff;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #ddddff;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #6aa3ff;
+}
+
+nav .btn {
+  background: #6aa3ff;
+  color: #0e0e11;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* Стили для страницы трека в новом стиле */
+.track-container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.track-image {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.track-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.track-artist {
+  font-size: 1.1rem;
+  color: #6aa3ff;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.track-date {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 30px;
+}
+
+.track-divider {
+  height: 1px;
+  background: #2a2a2a;
+  margin: 25px 0;
+  border: none;
+}
+
+.listen-button {
+  display: inline-block;
+  background: #6aa3ff;
+  color: #0e0e11;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+}
+
+.listen-button:hover {
+  background: #5591e6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(106, 163, 255, 0.4);
+}
+
+.rating-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.current-rating {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+.rating-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffd700;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+  .track-container {
+    margin: 30px 20px;
+    padding: 30px 25px;
+  }
+
+  .track-image {
+    height: 250px;
+  }
+
+  .track-title {
+    font-size: 1.8rem;
+  }
+
+  .track-artist {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .track-container {
+    margin: 20px 15px;
+    padding: 25px 20px;
+  }
+
+  .track-image {
+    height: 200px;
+  }
+
+  .track-title {
+    font-size: 1.6rem;
+  }
+}

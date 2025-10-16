@@ -22,11 +22,28 @@ def musics(request):
 def show_pesnya(request, pesnya_slug):
     pesnya = get_object_or_404(Music, name_slug=pesnya_slug)
     data = {
+        'name': pesnya.name,
+        'autor': pesnya.autor,
+        'photo':pesnya.photo,
+        'time_create':pesnya.time_create,
+        'ocenka': pesnya.get_sred_ocenka(),
+        'p_id':pesnya.pk,
+        'name_slug':pesnya.name_slug,
+        'css_file': 'music/style_song.css',
+        'url_for_ocenka': pesnya.get_absolute_url_for_ocenka,
+        }
+    return render(request, 'music/song.html', data)
+    
+
+
+def ocenka_pesnyi(request, pesnya_slug):
+    pesnya = get_object_or_404(Music, name_slug=pesnya_slug)
+    data = {
         'name_p': pesnya.name,
         'autor': pesnya.autor,
         'p_id':pesnya.pk
         }
-    return render(request, 'music/song.html', data)
+    return render(request, 'music/ocenka_song.html', data)
 
 
 def update_ocenka(p_id, value):

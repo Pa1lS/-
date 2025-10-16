@@ -1,156 +1,42 @@
-{% load static %}
-{% csrf_token %}
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>Оценка трека</title>
-    <link
-      rel="stylesheet"
-      href="{% static 'music/song_style.css' %}"
-    />
-    <!-- Подключение CSS -->
-  </head>
-  <body>
-    <div class="container">
-      <div class="horizontal-layout">
-        <div class="image-section">
-          <!-- Картинка трека -->
-          <img
-            src="{%static 'music/images/danek.png'%}"
-            alt="Обложка трека"
-            class="track-image"
-            style="
-              width: 100%;
-              border-radius: 10px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            "
-          />
-        </div>
+{% extends 'base.html' %} {% load static %}{%block style%}
+<link rel="stylesheet" href="{% static css_file %}" />
+{%endblock%} {% block content %}
+<div class="track-container">
+  <!-- Фото трека -->
+  <img
+    src="{{ photo }}"
+    alt="Обложка трека: {{ name }}"
+    class="track-image"
+    onerror="this.src='{% static 'music/images/danek.png' %}'"
+  />
 
-        < class="info-section">
-          <!-- Название и автор -->
-          <h2
-            style="font-size: 1.8rem; margin-bottom: 10px" id="pesnya" data-pid="{{p_id}}"
-          >
-            {{name_p}}
-          </h2>
-          <p
-            style="
-              font-size: 1.2rem;
-              color: #ccc;
-              margin-bottom: 20px;
-            "
-          >
-            {{autor}}
-          </p>
+  <!-- Название трека -->
+  <h1 class="track-title">{{ name}}</h1>
 
-          <div class="criteria">
-            <div>
-              <label>Образы</label>
-              <div class="slider-container">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value="5"
-                  class="slider"
-                  id="rhythm"
-                />
-                <span class="ratingValue">5</span>
-              </div>
-            </div>
-            <div>
-              <label>Рифмы / Складность исполнения</label>
-              <div class="slider-container">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value="5"
-                  class="slider"
-                  id="rhyme"
-                />
-                <span class="ratingValue">5</span>
-              </div>
-            </div>
-            <div>
-              <label
-                >Богатство наполнения / Разнообразие
-                звука</label
-              >
-              <div class="slider-container">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value="5"
-                  class="slider"
-                  id="wealth"
-                />
-                <span class="ratingValue">5</span>
-              </div>
-            </div>
-            <div>
-              <label>Ритмика / Качёвость</label>
-              <div class="slider-container">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value="5"
-                  class="slider"
-                  id="imagery"
-                />
-                <span class="ratingValue">5</span>
-              </div>
-            </div>
-            <div>
-              <label
-                >Харизма артиста / Реализация стиля</label
-              >
-              <div class="slider-container">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value="5"
-                  class="slider purple-slider"
-                  id="charisma"
-                />
-                <span class="ratingValue">5</span>
-              </div>
-            </div>
-            <div>
-              <label>Атмосфера / Погружаемость</label>
-              <div class="slider-container">
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value="5"
-                  class="slider purple-slider"
-                  id="vibe"
-                />
-                <span class="ratingValue">5</span>
-              </div>
-            </div>
-          </div>
-          <div class="final-score">
-            <h2>
-              Итоговая оценка:
-              <span id="finalScore">0.00</span>
-            </h2>
-          </div>
-          <button id="post-Score">Отправить формулу</button>
-          <script src="{% static 'music/get_final_score.js' %}"></script>
-        </div>
-      </div>
-    </div>
-    <script src="{% static 'music/script.js' %}"></script>
-  </body>
-</html>
+  <!-- Автор трека -->
+  <p class="track-artist">{{ autor }}</p>
+
+  <!-- Ссылка на прослушивание -->
+  <a
+    href="{{ listen_url }}"
+    class="listen-button"
+    target="_blank"
+  >
+    🎵 Слушать трек
+  </a>
+
+  <!-- Существующая оценка -->
+  <div class="rating-section">
+    <div class="current-rating">Текущий рейтинг</div>
+    <div class="rating-value">{{ ocenka }}</div>
+    <div class="rating-count"></div>
+  </div>
+
+  <!-- Кнопка оценить -->
+  <div class="actions">
+    <a href="{{ url_for_ocenka }}" class="rate-button">
+      ⭐ Оценить трек
+    </a>
+  </div>
+</div>
+{% endblock %}
